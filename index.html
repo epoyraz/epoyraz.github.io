@@ -1,131 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DataTables</title>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DataTables</title>
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
-    <style>
-    tfoot input {
-        width: 100%;
-        padding: 3px;
-        box-sizing: border-box;
-    }
-    </style>
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="http://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
-    <script src="jquery.csv-0.71.js"></script>
-    <script>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
+  <style>
+  tfoot input {
+    width: 100%;
+    padding: 3px;
+    box-sizing: border-box;
+  }
+  </style>
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="http://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+  <script src="jquery.csv-0.71.js"></script>
+  <script>
 
-    function showtable(thearray){
+  function showtable(thearray){
 
-      var table = $('#example').DataTable({
-          data: thearray,
-          columns: [
-            { title: "mz"},
-            { title: "rt"},
-            { title: "Blank.01"},
-            { title: "Pool.01"},
-            { title: "Pool.02"},
-            { title: "X004.CRa.H9M5.M470.TCA.Amino.MUS.01.ges.neg.featureXML"},
-            { title: "Blank.02"},
-            { title: "H01.K1"},
-            { title: "L01.K2"},
-            { title: "H14.K1"},
-            { title: "Blank.03"},
-            { title: "L03.K3"},
-            { title: "C14.K2"},
-            { title: "C01.K1"},
-            { title: "Blank.04"},
-            { title: "Pool.03"},
-            { title: "H14.K2"},
-            { title: "H01.K2"},
-            { title: "H03.K1"},
-            { title: "Blank.05"},
-            { title: "C01.K3"},
-            { title: "C14.K3"},
-            { title: "L03.K2"},
-            { title: "Blank.06"},
-            { title: "Pool.04"},
-            { title: "X024.CRa.H9M5.M470.TCA.Amino.MUS.02.ges.neg.featureXML"},
-            { title: "C03.K1"},
-            { title: "H03.K2"},
-            { title: "H14.K3"},
-            { title: "Blank.07"},
-            { title: "L01.K3"},
-            { title: "C14.K1"},
-            { title: "H01.K3"},
-            { title: "Blank.08"},
-            { title: "Pool.05"},
-            { title: "L01.K1"},
-            { title: "C01.K2"},
-            { title: "C03.K3"},
-            { title: "Blank.09"},
-            { title: "L14.K3"},
-            { title: "C03.K2"},
-            { title: "L03.K1"},
-            { title: "Blank.10"},
-            { title: "Pool.06"},
-            { title: "X043.CRa.H9M5.M470.TCA.Amino.MUS.03.ges.neg.featureXML"},
-            { title: "L14.K1"},
-            { title: "L14.K2"},
-            { title: "H03.K3"}          ]
-      } );
+    var table = $('#example').DataTable({
+      "paging": false,
+      data: thearray,
+      "columnDefs": [
+        {         "targets": [ 0,1, 2,3,4,5,6,7,8,9,10 ],
+          render: function ( data, type, row ) {
+          return (100 * data).toFixed(2);
+        } }],
+        columns: [
+          { title: "mz"},
+          { title: "rt"},
+          { title: "Blank.01"},
+          { title: "Pool.01"},
+          { title: "Pool.02"},
+          { title: "X004.CRa.H9M5.M470.TCA.Amino.MUS.01.ges.neg.featureXML"},
+          { title: "Blank.02"},
+          { title: "H01.K1"},
+          { title: "L01.K2"},
+          { title: "H14.K1"},
+          { title: "Blank.03"},
+          { title: "L03.K3"},
+          { title: "C14.K2"},
+          { title: "C01.K1"},
+          { title: "Blank.04"},
+          { title: "Pool.03"},
+          { title: "H14.K2"},
+          { title: "H01.K2"},
+          { title: "H03.K1"},
+          { title: "Blank.05"},
+          { title: "C01.K3"},
+          { title: "C14.K3"},
+          { title: "L03.K2"},
+          { title: "Blank.06"},
+          { title: "Pool.04"},
+          { title: "X024.CRa.H9M5.M470.TCA.Amino.MUS.02.ges.neg.featureXML"},
+          { title: "C03.K1"},
+          { title: "H03.K2"},
+          { title: "H14.K3"},
+          { title: "Blank.07"},
+          { title: "L01.K3"},
+          { title: "C14.K1"},
+          { title: "H01.K3"},
+          { title: "Blank.08"},
+          { title: "Pool.05"},
+          { title: "L01.K1"},
+          { title: "C01.K2"},
+          { title: "C03.K3"},
+          { title: "Blank.09"},
+          { title: "L14.K3"},
+          { title: "C03.K2"},
+          { title: "L03.K1"},
+          { title: "Blank.10"},
+          { title: "Pool.06"},
+          { title: "X043.CRa.H9M5.M470.TCA.Amino.MUS.03.ges.neg.featureXML"},
+          { title: "L14.K1"},
+          { title: "L14.K2"},
+          { title: "H03.K3"}]
 
-      $('#example thead th').each( function () {
+        } );
+
+        $('#example thead th').each( function () {
           var title = $(this).text();
           $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
-      } );
+        } );
 
-      table.columns().every( function () {
+        table.columns().every( function () {
           var that = this;
 
           $( 'input', this.header() ).on( 'keyup change', function () {
-              if ( that.search() !== this.value ) {
-                  that
-                      .search( this.value )
-                      .draw();
-              }
+            if ( that.search() !== this.value ) {
+              that
+              .search( this.value )
+              .draw();
+            }
           } );
-      } );
+        } );
 
-    }
+      }
 
-    var myarray = [];
-    $.getJSON("data3.json", function(json) {
-    for(var i=0;i<json.length;i++){
-      var obj = json[i];
-      var myarray2 = [];
-      for(var key in obj){
-      var attrName = key;
-      var attrValue = obj[key];
-      myarray2.push(attrValue);
-    }
-    myarray.push(myarray2);
-    }
-    showtable(myarray);
-    });
-    </script>
-  </head>
-  <body>
+      var myarray = [];
+      $.getJSON("data3.json", function(json) {
+        for(var i=0;i<json.length;i++){
+          var obj = json[i];
+          var myarray2 = [];
+          for(var key in obj){
+            var attrName = key;
+            var attrValue = obj[key];
+            myarray2.push(attrValue);
+          }
+          myarray.push(myarray2);
+        }
+        showtable(myarray);
+      });
+      </script>
+    </head>
+    <body>
 
-    <table id="example" class="display" cellspacing="0" width="100%">
-    </table>
+      <table id="example" class="display" cellspacing="0" width="100%">
+      </table>
 
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  </body>
-</html>
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    </body>
+    </html>
