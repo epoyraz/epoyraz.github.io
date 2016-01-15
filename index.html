@@ -103,6 +103,11 @@
         </div>
         <script>
 
+        function getColorClass(){
+          var randNum = Math.floor(Math.random()*(5+1));
+          return "q"+randNum+"-5"
+        }
+
         function faerben(){
           console.log("faerben gedrueckt");
           var IDs = [];
@@ -111,14 +116,8 @@
               var idstring = "#" + entry ;
               $(idstring).addClass(getColorClass());
           });
-
-          function getColorClass(){
-            var randNum = Math.floor(Math.random()*(5+1));
-            return "q"+randNum+"-5"
-          }
-
-
         }
+
 
             (function($) {
                 $(window).load(function() {
