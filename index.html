@@ -21,7 +21,7 @@
                 min-width: 65px;
                 color: #2a9cbd;
                 font-weight: bold;
-            }            
+            }
             #map-wrapper .btn-group {
                 position: absolute;
                 right: 0px;
@@ -38,8 +38,8 @@
                 display: inline-block;
                 position: relative;
                 width: 100%;
-                height: 300px; 
-                vertical-align: middle; 
+                height: 300px;
+                vertical-align: middle;
                 overflow: hidden;
             }
             #map-viewport svg {
@@ -92,10 +92,10 @@
             </div>
         </div>
         <script>
-            
+
             (function($) {
                 $(window).load(function() {
-                    
+
                     // Kartenauswahl
                     var _maps = [
                         {
@@ -113,9 +113,13 @@
                         {
                             url:    './maps/bw.svg',
                             name:   'Baden-Württemberg'
+                        },
+                        {
+                            url:    './maps/nrw.svg',
+                            name:   'NRW'
                         }
                     ];
-                    
+
                     // Menü erstellen
                     var menu = $('#map-wrapper .dropdown-menu');
                     $.each(_maps, function(num, item) {
@@ -125,34 +129,34 @@
                             loadMap(num);
                         });
                     });
-                    
+
                     // Lade erste Karte
                     loadMap(0);
-                    
+
                     function loadMap(num) {
                         // Init aktuelle Kartendaten
                         var map = _maps[num];
-                        
+
                         // Clear Viewport/Results
                         $('#map-viewport').empty();
                         $('#map-display').html('&nbsp;');
                         $('#search-result').empty();
-                        
+
                         // Header ändern
                         $('.page-header').text('PLZ Karte ' + map.name);
-                        
+
                         $.get(map.url, function(xml) {
                             // Original SVG
                             var svg_origin = $(xml.documentElement);
-                            
+
                             // SVG Responsive Cleanup
                             var svg = $('<svg version="1.1" preserveAspectRatio="xMinYMin meet"></svg>');
                             svg.get(0).setAttribute('viewBox', '0 0 ' + svg_origin.attr('width') + ' ' + svg_origin.attr('height'));
-                            svg_origin.find('path').appendTo(svg);                            
-                            
+                            svg_origin.find('path').appendTo(svg);
+
                             // SVG zum Viewport hinzufügen
                             $('#map-viewport').append(svg).height(svg.height());
-                            
+
                             // Hover-Event: Display PLZ Gebiet
                             $('#map-viewport path').hover(
                                 function() {
@@ -163,12 +167,12 @@
                                     $('#map-display').html(gebiet);
                                 }
                             );
-                    
+
                             function getPlzGebiet(plz) {
                                 var pad = "xxxxx"
                                 return plz + pad.substring(0, pad.length - plz.length);
                             }
-                            
+
                             // Click-Event: PLZ Suche starten
                             $('#map-viewport path').on('click', function() {
                                 $('#map-viewport path').removeAttr('class');
@@ -177,30 +181,30 @@
                             });
                         });
                     }
-                    
+
                     /*
                      * PLZ Suche
                      */
-                    
+
                     // Parse & Cache CSV-Data
                     var csvData;
-                    var settings = { 
+                    var settings = {
                         download: true,
                         delimiter: ",",
                         header: true,
                         skipEmptyLines: true,
                         complete: function(data) {
                             csvData = data.data;
-                        }                        
+                        }
                     };
                     Papa.parse('./data/zuordnung_plz_ort.csv', settings);
-                    
+
                     function showResults(query) {
                         var table = $('<table class="table table-striped table-bordered table-hover"><thead><tr><th>PLZ</th><th>Ort</th><th>Bundesland</th></tr></thead><tbody></tbody></table>');
                         $.each(csvData, function(index, value) {
                             // Pattern
                             var pattern_plz         = new RegExp("^" + query + ".*$");
-                            
+
                             // Suchabfrage
                             if(value.plz.match(pattern_plz)) {
                                 // Tabelle erstellen
