@@ -111,7 +111,6 @@
           $("#map-viewport").find("path").each(function(){ IDs.push(this.id); });
           IDs.forEach(function(entry) {
               var idstring = "#" + entry ;
-              $(idstring).removeAttribute('fill');
               $(idstring).addClass(getColorClass());
           });
         }
@@ -122,22 +121,6 @@
 
                     // Kartenauswahl
                     var _maps = [
-                        {
-                            url:    './maps/kreis-biberach.svg',
-                            name:   'Kreis Biberach'
-                        },
-                        {
-                            url:    './maps/sachsen.svg',
-                            name:   'Sachsen'
-                        },
-                        {
-                            url:    './maps/berlin.svg',
-                            name:   'Berlin'
-                        },
-                        {
-                            url:    './maps/bw.svg',
-                            name:   'Baden-Württemberg'
-                        },
                         {
                             url:    './maps/nrw.svg',
                             name:   'NRW'
