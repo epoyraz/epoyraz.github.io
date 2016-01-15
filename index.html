@@ -100,10 +100,6 @@
         </div>
         <script>
 
-        function getColorClass(){
-          var randNum = Math.floor(Math.random()*(5+1));
-          return "q"+randNum+"-5"
-        }
 
         function faerben(){
           console.log("faerben gedrueckt");
@@ -111,7 +107,9 @@
           $("#map-viewport").find("path").each(function(){ IDs.push(this.id); });
           IDs.forEach(function(entry) {
               var idstring = "#" + entry ;
-              $(idstring).addClass(getColorClass());
+              var randNum = Math.floor(Math.random()*(4+1));
+              var classtring =  "q"+randNum+"-5"
+              $(idstring).addClass(classtring);
           });
         }
 
