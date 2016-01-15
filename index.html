@@ -106,9 +106,12 @@
           var IDs = [];
           $("#map-viewport").find("path").each(function(){ IDs.push(this.id); });
           IDs.forEach(function(entry) {
+              console.log(entry);
               var idstring = "#" + entry ;
               var randNum = Math.floor(Math.random()*(4+1));
-              var classtring =  "q"+randNum+"-5"
+              var classtring =  "q"+randNum+"-5";
+              console.log(classtring);
+              $(idstring).removeAttr("fill");
               $(idstring).addClass(classtring);
           });
         }
