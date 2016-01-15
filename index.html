@@ -56,8 +56,10 @@
                 fill: #2a9cbd;
             }
         </style>
+
     </head>
     <body style="background: #fdfdfd; padding-bottom: 50px;">
+      <button type="button" class="btn btn-default" onclick="faerben">Färben</button>
         <div class="container">
             <div class="row">
                 <div class="col-md-7 col-md-offset-2">
@@ -92,6 +94,11 @@
             </div>
         </div>
         <script>
+
+        function faerben(){
+          console.log("faerben gedrueckt");
+          $("#458").css('fill','rgb(235, 33, 39)')
+        }
 
             (function($) {
                 $(window).load(function() {
