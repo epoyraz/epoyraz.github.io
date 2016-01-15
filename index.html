@@ -114,6 +114,7 @@
           $("#map-viewport").find("path").each(function(){ IDs.push(this.id); });
           IDs.forEach(function(entry) {
               var idstring = "#" + entry ;
+              $(idstring).removeAttribute('fill');
               $(idstring).addClass(getColorClass());
           });
         }
